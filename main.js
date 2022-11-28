@@ -3,7 +3,7 @@ function StartClassification()
     //prompts the user to get access to microphoes and cameras
     navigator.mediaDevices.getUserMedia({audio: true});
     //used to trigger sond classification function
-    classifier = ml5.soundClassifier('https://teachablemachine.withgoogle.com/models/GpoeHGrbn/model.json', modelReady);
+    classifier = ml5.soundClassifier('', modelReady);
 }
 function modelReady()
 {
@@ -13,7 +13,7 @@ function modelReady()
 }
 function gotResults(error, results)
 {
-    if(error)
+    if(error)https://prod.liveshare.vsengsaas.visualstudio.com/join?351D34E2AB327A9EBE3541CA26B3BF5A8A7C
     {
         console.error(error);
     }
@@ -32,18 +32,18 @@ function gotResults(error, results)
         img2 = document.getElementById("alien2");
         img3 = document.getElementById("alien3");
         img4 = document.getElementById("alien4");
-
+        //input sound's and gif's here
         if(results[0].label == "Clapping")
         {
-            img1.src = "aliens-01.gif";
-            img2.src = "aliens-02.png";
-            img3.src = "aliens-03.png";
-            img4.src = "aliens-04.png";
+            img1.src = "Lion.gif";
+            img2.src = "cat.jpeg";
+            img3.src = "Cow.jpg";
+            img4.src = "Dog.jpg";
         }
         else if(results[0].label == "Snapping")
         {
-            img1.src = "aliens-01.png";
-            img2.src = "aliens-02.gif";
+            img1.src = "Lion.jpg";
+            img2.src = "Cat.gif";
             img3.src = "aliens-03.png";
             img4.src = "aliens-04.png";
         }
