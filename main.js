@@ -2,8 +2,8 @@ function StartClassification()
 {
     //prompts the user to get access to microphoes and cameras
     navigator.mediaDevices.getUserMedia({audio: true});
-    //used to trigger sond classification function
-    classifier = ml5.soundClassifier('', modelReady);
+    //used to trigger sound classification function
+    classifier = ml5.soundClassifier('https://teachablemachine.withgoogle.com/models/XiuaXdxlD/', modelReady);
 }
 function modelReady()
 {
@@ -33,33 +33,40 @@ function gotResults(error, results)
         img3 = document.getElementById("alien3");
         img4 = document.getElementById("alien4");
         //input sound's and gif's here
-        if(results[0].label == "Clapping")
+        if(results[0].label == "Lion")
         {
             img1.src = "Lion.gif";
             img2.src = "cat.jpeg";
             img3.src = "Cow.jpg";
             img4.src = "Dog.jpg";
         }
-        else if(results[0].label == "Snapping")
+        else if(results[0].label == "Cat")
         {
             img1.src = "Lion.jpg";
             img2.src = "Cat.gif";
-            img3.src = "aliens-03.png";
-            img4.src = "aliens-04.png";
+            img3.src = "Cow.jpg";
+            img4.src = "Dog.jpg";
         }
-        else if(results[0].label == "Bell")
+        else if(results[0].label == "Cow")
         {
-            img1.src = "aliens-01.png";
-            img2.src = "aliens-02.png";
-            img3.src = "aliens-03.gif";
-            img4.src = "aliens-04.png";
+            img1.src = "Lion.jpg";
+            img2.src = "cat.jpeg";
+            img3.src = "Cow.gif";
+            img4.src = "Dog.jpg";
+        }
+        else if(results[0].label == "Dog")
+        {
+            img1.src = "Lion.jpg";
+            img2.src = "cat.jpeg";
+            img3.src = "Cow.jpg";
+            img4.src = "Dog.gif";
         }
         else
         {
-            img1.src = "aliens-01.png";
-            img2.src = "aliens-02.png";
-            img3.src = "aliens-03.png";
-            img4.src = "aliens-04.gif";
+            img1.src = "Lion.jpg";
+            img2.src = "cat.jpeg";
+            img3.src = "Cow.jpg";
+            img4.src = "Dog.jpg";
         }
     }
 }
