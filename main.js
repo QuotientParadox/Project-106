@@ -2,8 +2,8 @@ function StartClassification()
 {
     //prompts the user to get access to microphoes and cameras
     navigator.mediaDevices.getUserMedia({audio: true});
-    //used to trigger sound classification function
-    classifier = ml5.soundClassifier('https://teachablemachine.withgoogle.com/models/XiuaXdxlD/', modelReady);
+    //Put new link and also put .json at the end
+    classifier = ml5.soundClassifier('https://teachablemachine.withgoogle.com/models/XiuaXdxlD/model.json', modelReady);
 }
 function modelReady()
 {
@@ -28,45 +28,19 @@ function gotResults(error, results)
         document.getElementById("result_label").style.color = "rgb("+random_R+","+random_G+","+random_B+")";
         document.getElementById("result_confidence").style.color = "rgb("+random_R+","+random_G+","+random_B+")";
 
-        img1 = document.getElementById("alien1");
-        img2 = document.getElementById("alien2");
-        img3 = document.getElementById("alien3");
-        img4 = document.getElementById("alien4");
-        //input sound's and gif's here
-        if(results[0].label == "Lion")
+        img = document.getElementById('animal_image');
+        if (results[0].label == "Barking")
         {
-            img1.src = "Lion.gif";
-            img2.src = "cat.jpeg";
-            img3.src = "Cow.jpg";
-            img4.src = "Dog.jpg";
+             img.src = 'bark.gif';
         }
-        else if(results[0].label == "Cat")
+        else if
+        (results[0].label == "Meowing")
         {
-            img1.src = "Lion.jpg";
-            img2.src = "Cat.gif";
-            img3.src = "Cow.jpg";
-            img4.src = "Dog.jpg";
-        }
-        else if(results[0].label == "Cow")
-        {
-            img1.src = "Lion.jpg";
-            img2.src = "cat.jpeg";
-            img3.src = "Cow.gif";
-            img4.src = "Dog.jpg";
-        }
-        else if(results[0].label == "Dog")
-        {
-            img1.src = "Lion.jpg";
-            img2.src = "cat.jpeg";
-            img3.src = "Cow.jpg";
-            img4.src = "Dog.gif";
+            img.src = 'meow.gif';
         }
         else
         {
-            img1.src = "Lion.jpg";
-            img2.src = "cat.jpeg";
-            img3.src = "Cow.jpg";
-            img4.src = "Dog.jpg";
+            img.src = 'listen.gif';
         }
     }
 }
